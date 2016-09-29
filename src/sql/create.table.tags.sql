@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS tags(id INT, tag TEXT);
