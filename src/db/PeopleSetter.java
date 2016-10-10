@@ -13,7 +13,8 @@ public class PeopleSetter {
 	static PreparedStatement stmt;
 
 	/*
-	 * Add a new person to the database that must have a first name
+	 * Add a new person to the database. No information is required at all.
+	 * You can enter a completely blank name
 	 */
 	public static void addPersonToDatabase(Person p) {
 		int id = PeopleGetter.getNextID();
@@ -29,7 +30,7 @@ public class PeopleSetter {
 				updateMiddleName(id, p.middle);
 			}
 			if (p.lastName != null) {
-				updateLastName(id, p.middle);
+				updateLastName(id, p.lastName);
 			}
 			if (p.tags.size() > 0) {
 				insertTags(id, p.tags);
