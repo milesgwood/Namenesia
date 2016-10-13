@@ -24,7 +24,7 @@ import javafx.scene.text.Text;
 public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
-			
+			//Sets the grid and alignment as well as the gaps
 			GridPane grid = new GridPane();
 			grid.setAlignment(Pos.CENTER);
 			grid.setHgap(10);
@@ -72,19 +72,11 @@ public class Main extends Application {
 			btn.addEventHandler(MouseEvent.MOUSE_EXITED, (MouseEvent e)->{
 	            btn.setEffect(null); });
 			
+			//Makes the button add the name to the database when it is clicked
 			btn.setOnAction((ActionEvent e) -> {
-				Person p = new Person(firstText.getText());
-				p.middle = middleText.getText();
-				p.lastName = lastText.getText();
-				PeopleSetter.addPersonToDatabase(p);
-				System.out.println("Button Clicked");
+				
 			});
-			
-			//This sets the action but we don't have it yet TO DO
-			final Text actiontarget = new Text();
-			grid.add(actiontarget, 1, 6);
 
-			
 			primaryStage.setTitle("Namenesia");
 			primaryStage.setScene(scene);
 			primaryStage.show();
