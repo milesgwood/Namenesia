@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.101" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AddTagsController">
+   <top>
+      <HBox prefHeight="36.0" prefWidth="23.0" stylesheets="@application.css" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="BASELINE_LEFT" prefHeight="36.0" prefWidth="215.0" text="What will you remember about ">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+            <Label fx:id="name" prefHeight="36.0" prefWidth="221.0" text="INSERT NAME HERE" />
+         </children>
+         <BorderPane.margin>
+            <Insets left="10.0" />
+         </BorderPane.margin>
+      </HBox>
+   </top>
+   <center>
+      <TextField fx:id="tags" BorderPane.alignment="CENTER">
+         <tooltip>
+            <Tooltip text="Seperate tags with commas" />
+         </tooltip>
+         <BorderPane.margin>
+            <Insets left="10.0" right="10.0" />
+         </BorderPane.margin>
+      </TextField>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="actiontarget" HBox.hgrow="NEVER">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+            <Region nodeOrientation="LEFT_TO_RIGHT" prefHeight="36.0" prefWidth="404.0" visible="false" HBox.hgrow="ALWAYS" />
+            <Button fx:id="reset" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#handleResetButtonAction" text="Reset" HBox.hgrow="NEVER" />
+            <Button fx:id="submit" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#handleSubmitButtonAction" text="Submit">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="10.0" top="5.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>

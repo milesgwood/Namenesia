@@ -40,4 +40,13 @@ public class Person {
 	{
 		this.tags.add(tag);
 	}
+	
+	public String toString()
+	{
+		String name;
+		name = firstName;
+		if(middle != null)  name += middle;
+		if(lastName != null)name += lastName;
+		return name;
+	}
 }

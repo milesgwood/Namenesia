@@ -1,7 +1,5 @@
 package view;
 
-import dataTypes.Person;
-import db.PeopleSetter;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;

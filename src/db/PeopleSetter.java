@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import dataTypes.Person;
 
@@ -16,7 +17,7 @@ public class PeopleSetter {
 	 * Add a new person to the database. No information is required at all.
 	 * You can enter a completely blank name
 	 */
-	public static void addPersonToDatabase(Person p) {
+	public static int addPersonToDatabase(Person p) {
 		int id = PeopleGetter.getNextID();
 		String sql = "INSERT INTO people (id, first) VALUES (? , ?);";
 		Connector.dbConnect(false);
@@ -41,6 +42,7 @@ public class PeopleSetter {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return id;
 	}
 
 	/**
@@ -61,15 +63,15 @@ public class PeopleSetter {
 	 * statement object.
 	 * 
 	 * @param id
-	 * @param tags
+	 * @param tagsList
 	 * @throws SQLException
 	 */
-	static private void insertTags(int id, ArrayList<String> tags) throws SQLException {
+	static public void insertTags(int id, List<String> tagsList) throws SQLException {
 		c = Connector.getConnection();
 		String sql = "INSERT INTO tags(id, tag) VALUES (?, ?)";
 		stmt = c.prepareStatement(sql);
 		stmt.setInt(1, id);
-		for (String tag : tags) {
+		for (String tag : tagsList) {
 			stmt.setString(2, tag);
 			stmt.executeUpdate();
 			System.out.println("Added another tag");

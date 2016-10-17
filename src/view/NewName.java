@@ -22,5 +22,4 @@ public class NewName extends Application{
 	{
 		launch(args);
 	}
-
 }
