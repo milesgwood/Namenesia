@@ -11,7 +11,7 @@ public class PersonBus {
 	public static void setPerson(Person p, int pid)
 	{
 		currentPerson = p;
-		wholeName = p.toString();
+		wholeName = p.toStringWithSpaces();
 		id = pid;
 	}
 }

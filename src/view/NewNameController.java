@@ -10,7 +10,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -54,10 +53,9 @@ public class NewNameController implements Initializable {
 		
 		//Forward the stage to the next view where tags can be added
 		Parent root = FXMLLoader.load(getClass().getResource("AddTags.fxml"));
-		Stage appStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		Stage appStage = (Stage) ((Button)event.getSource()).getScene().getWindow();
 		Scene addTagScene = new Scene(root);
 		addTagScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		appStage.hide();
 		appStage.setScene(addTagScene);
 		appStage.show();
     }

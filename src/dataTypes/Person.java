@@ -49,4 +49,13 @@ public class Person {
 		if(lastName != null)name += lastName;
 		return name;
 	}
+	
+	public String toStringWithSpaces()
+	{
+		String name;
+		name = firstName;
+		if(middle != null)  name += " " + middle;
+		if(lastName != null)name += " " + lastName;
+		return name;
+	}
 }

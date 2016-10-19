@@ -32,16 +32,16 @@
       </TextField>
    </center>
    <bottom>
-      <HBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="547.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="actiontarget" HBox.hgrow="NEVER">
+            <Label fx:id="actiontarget" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="205.0">
                <padding>
                   <Insets left="5.0" />
                </padding>
             </Label>
-            <Region nodeOrientation="LEFT_TO_RIGHT" prefHeight="36.0" prefWidth="404.0" visible="false" HBox.hgrow="ALWAYS" />
-            <Button fx:id="reset" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#handleResetButtonAction" text="Reset" HBox.hgrow="NEVER" />
-            <Button fx:id="submit" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#handleSubmitButtonAction" text="Submit">
+            <Region nodeOrientation="LEFT_TO_RIGHT" visible="false" HBox.hgrow="SOMETIMES" />
+            <Button fx:id="reset" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleResetButtonAction" text="Reset" HBox.hgrow="NEVER" />
+            <Button fx:id="submit" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleSubmitButtonAction" text="Submit">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="10.0" top="5.0" />
                </HBox.margin>
