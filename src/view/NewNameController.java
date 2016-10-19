@@ -5,20 +5,25 @@ import java.util.ResourceBundle;
 
 import dataTypes.Person;
 import db.PeopleSetter;
+import db.PersonBus;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 /**
  *
  * @author Milesgwood
  */
-public class FXMLDocumentController implements Initializable {
+public class NewNameController implements Initializable {
     
     @FXML 
     private Text actiontarget;
@@ -36,13 +41,23 @@ public class FXMLDocumentController implements Initializable {
     private DropShadow shadow = new DropShadow();
 
     @FXML
-    private void handleSubmitButtonAction(ActionEvent event) {
+    private void handleSubmitButtonAction(ActionEvent event) throws Exception {
         actiontarget.setText("Added");
         Person p = new Person(firstName.getText());
 		p.middle = middleName.getText();
 		p.lastName = lastName.getText();
-		PeopleSetter.addPersonToDatabase(p);
+		
+		int pidInDatabase  = PeopleSetter.addPersonToDatabase(p);
+		PersonBus.setPerson(p, pidInDatabase);
 		System.out.println("Submit Clicked");
+		
+		//Forward the stage to the next view where tags can be added
+		Parent root = FXMLLoader.load(getClass().getResource("AddTags.fxml"));
+		Stage appStage = (Stage) ((Button)event.getSource()).getScene().getWindow();
+		Scene addTagScene = new Scene(root);
+		addTagScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		appStage.setScene(addTagScene);
+		appStage.show();
     }
     
     @FXML
@@ -67,6 +82,5 @@ public class FXMLDocumentController implements Initializable {
         	reset.setEffect(shadow); });
         reset.addEventHandler(MouseEvent.MOUSE_EXITED,  (MouseEvent e)->{ 
         	reset.setEffect(null); });
-    }    
-    
+    }     
 }
