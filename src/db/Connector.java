@@ -90,6 +90,7 @@ public class Connector {
 			//create tags
 			sql = SQLParser.sqlStringCreation("create.table.img.sql");
 			stmt.executeUpdate(sql);
+			AddImage.setImage("src/view/default_profile.png", 0);
 			
 			stmt.close();
 			c.close();

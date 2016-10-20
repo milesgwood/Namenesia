@@ -82,5 +82,5 @@ public class NewNameController implements Initializable {
         	reset.setEffect(shadow); });
         reset.addEventHandler(MouseEvent.MOUSE_EXITED,  (MouseEvent e)->{ 
         	reset.setEffect(null); });
-    }     
+    }
 }
