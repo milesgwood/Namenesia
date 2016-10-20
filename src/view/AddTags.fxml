@@ -5,7 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.101" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AddTagsController">
+<BorderPane xmlns="http://javafx.com/javafx/8.0.101" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddTagsController">
    <top>
       <HBox prefHeight="36.0" prefWidth="23.0" stylesheets="@application.css" BorderPane.alignment="CENTER">
          <children>

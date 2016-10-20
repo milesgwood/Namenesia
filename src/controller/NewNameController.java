@@ -1,4 +1,4 @@
-package view;
+package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -52,10 +52,10 @@ public class NewNameController implements Initializable {
 		System.out.println("Submit Clicked");
 		
 		//Forward the stage to the next view where tags can be added
-		Parent root = FXMLLoader.load(getClass().getResource("AddTags.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("../view/AddTags.fxml"));
 		Stage appStage = (Stage) ((Button)event.getSource()).getScene().getWindow();
 		Scene addTagScene = new Scene(root);
-		addTagScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		addTagScene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
 		appStage.setScene(addTagScene);
 		appStage.show();
     }
