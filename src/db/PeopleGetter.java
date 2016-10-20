@@ -34,7 +34,6 @@ public class PeopleGetter {
 		return nextID;
 	}
 	
-	
 	public static String getNameFromID(int id)
 	{
 		String first, middle, last;

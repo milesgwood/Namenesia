@@ -28,11 +28,28 @@ public class Connector {
 			Class.forName("org.sqlite.JDBC");
 			c = DriverManager.getConnection("jdbc:sqlite:Namenesia.sqlite");
 			c.setAutoCommit(autoCommit);
+			check_for_tables();
 			System.out.println("Opened database successfully");
 		} catch (Exception e) {
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 			e.printStackTrace();
 			System.exit(0);
+		}
+	}
+	
+	/**
+	 * This method checks for the basic people table and creates it if it is missing.
+	 */
+	private static void check_for_tables()
+	{
+		String sql = "SELECT * FROM people;";
+		c = Connector.getConnection();
+		try {
+			stmt = c.createStatement();
+			stmt.execute(sql);
+			stmt.close();
+		} catch (SQLException e) {
+			createTables();
 		}
 	}
 	
@@ -59,7 +76,7 @@ public class Connector {
 	 * Creates all of the database tables using the SQLParser and SQL text files.
 	 */
 	public static void createTables() {
-		dbConnect(true);
+		getConnection();
 		try {
 			//create contacts
 			stmt = c.createStatement();
@@ -67,8 +84,11 @@ public class Connector {
 			stmt.executeUpdate(sql);
 			
 			//create tags
-			stmt = c.createStatement(); 
 			sql = SQLParser.sqlStringCreation("create.table.tags.sql");
+			stmt.executeUpdate(sql);
+			
+			//create tags
+			sql = SQLParser.sqlStringCreation("create.table.img.sql");
 			stmt.executeUpdate(sql);
 			
 			stmt.close();
