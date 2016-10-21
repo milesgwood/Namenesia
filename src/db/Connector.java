@@ -47,6 +47,10 @@ public class Connector {
 		try {
 			stmt = c.createStatement();
 			stmt.execute(sql);
+			sql = "SELECT * FROM img;";
+			stmt.execute(sql);
+			sql = "SELECT * FROM tags;";
+			stmt.execute(sql);
 			stmt.close();
 		} catch (SQLException e) {
 			createTables();

@@ -4,6 +4,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import dataTypes.Person;
+import db.PeopleGetter;
+import db.PersonBus;
 import javafx.application.Application;
 
 public class MainStage extends Application{
@@ -33,6 +36,8 @@ public class MainStage extends Application{
 	
 	public static void main(String[] args)
 	{
+		Person me = PeopleGetter.getPersonFromID(1);
+		PersonBus.setPerson(me, 1);
 		launch(args);
 	}
 }

@@ -50,5 +50,11 @@ public class ProfileController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         name.setText(PersonBus.wholeName);
+        try {
+			image.setImage(AddImage.getImage(PersonBus.id));
+		} catch (IOException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }     
 }

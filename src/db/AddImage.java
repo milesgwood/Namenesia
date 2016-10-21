@@ -1,9 +1,6 @@
 package db;
 
-import java.awt.EventQueue;
-import java.awt.Graphics;
-//import java.awt.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import javafx.embed.swing.SwingFXUtils;
 import java.awt.image.BufferedImage;
@@ -11,8 +8,6 @@ import java.io.*;
 import java.sql.*;
 
 import javax.imageio.ImageIO;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
 
 public class AddImage {
 
@@ -60,7 +55,7 @@ public class AddImage {
 		}
 	}
 
-	public static WritableImage getImage(int id) throws FileNotFoundException, IOException, SQLException {
+	public static Image getImage(int id) throws FileNotFoundException, IOException, SQLException {
 
 		Connection c = Connector.c;
 		if (c == null || c.isClosed())
@@ -81,11 +76,12 @@ public class AddImage {
 			
 			// convert byte array back to BufferedImage
 			InputStream in = new ByteArrayInputStream(person_image);
-			BufferedImage img = ImageIO.read(in);
+			BufferedImage bf = ImageIO.read(in);
+			//Convert BufferedImage to Scene Image
+			WritableImage wr = new WritableImage(bf.getWidth(), bf.getHeight());
+			SwingFXUtils.toFXImage(bf, wr);
 			ps.close();
-			WritableImage wi = null;
-			SwingFXUtils.toFXImage(img, wi);
-			return wi;
+			return wr;
 
 		} catch (Exception e) {
 			e.printStackTrace();
