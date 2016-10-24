@@ -18,6 +18,7 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import mvvm.NewNameViewModel;
 
 /**
  *
@@ -39,35 +40,6 @@ public class NewNameController implements Initializable {
     private Button reset;
     
     private DropShadow shadow = new DropShadow();
-
-    @FXML
-    private void handleSubmitButtonAction(ActionEvent event) throws Exception {
-        actiontarget.setText("Added");
-        Person p = new Person(firstName.getText());
-		p.middle = middleName.getText();
-		p.lastName = lastName.getText();
-		
-		int pidInDatabase  = PeopleSetter.addPersonToDatabase(p);
-		PersonBus.setPerson(p, pidInDatabase);
-		System.out.println("Submit Clicked");
-		
-		//Forward the stage to the next view where tags can be added
-		Parent root = FXMLLoader.load(getClass().getResource("../view/AddTags.fxml"));
-		Stage appStage = (Stage) ((Button)event.getSource()).getScene().getWindow();
-		Scene addTagScene = new Scene(root);
-		addTagScene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
-		appStage.setScene(addTagScene);
-		appStage.show();
-    }
-    
-    @FXML
-    private void handleResetButtonAction(ActionEvent event) {
-        actiontarget.setText("Reset");
-        firstName.setText("");
-        middleName.setText("");
-        lastName.setText("");
-		System.out.println("Reset Clicked");
-    }
     
     /**
      * Initializes the event handlers for the buttons when they are scrolled over.
@@ -82,5 +54,11 @@ public class NewNameController implements Initializable {
         	reset.setEffect(shadow); });
         reset.addEventHandler(MouseEvent.MOUSE_EXITED,  (MouseEvent e)->{ 
         	reset.setEffect(null); });
-    }     
+        
+        NewNameViewModel nnvm = new NewNameViewModel();
+        //Connect the ViewModel
+        firstName.textProperty().bindBidirectional(nnvm.firstNameProperty());
+        middleName.textProperty().bindBidirectional(nnvm.middleNameProperty());
+        lastName.textProperty().bindBidirectional(nnvm.lastNameProperty());
+    }
 }

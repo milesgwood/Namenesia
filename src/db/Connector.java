@@ -47,6 +47,10 @@ public class Connector {
 		try {
 			stmt = c.createStatement();
 			stmt.execute(sql);
+			sql = "SELECT * FROM img;";
+			stmt.execute(sql);
+			sql = "SELECT * FROM tags;";
+			stmt.execute(sql);
 			stmt.close();
 		} catch (SQLException e) {
 			createTables();
@@ -90,6 +94,7 @@ public class Connector {
 			//create tags
 			sql = SQLParser.sqlStringCreation("create.table.img.sql");
 			stmt.executeUpdate(sql);
+			//AddImage.setImage("src/view/default_profile.png", 0);
 			
 			stmt.close();
 			c.close();
