@@ -8,11 +8,11 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<SplitPane dividerPositions="0.40703517587939697" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.101" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProfileController">
+<SplitPane dividerPositions="0.40703517587939697, 0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.101" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProfileController">
   <items>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="161.0" prefWidth="598.0">
+    <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="162.0" prefWidth="598.0">
          <children>
-            <FlowPane prefHeight="164.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <FlowPane prefHeight="165.0" prefWidth="598.0" AnchorPane.bottomAnchor="77.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#handlePicturePressed" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -33,14 +33,25 @@
                </children>
             </FlowPane>
          </children></AnchorPane>
-      <ScrollPane prefHeight="200.0" prefWidth="200.0">
+      <ScrollPane>
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="448.0" prefWidth="579.0">
+          <AnchorPane maxHeight="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="670.0" prefWidth="576.0">
                <children>
-                  <Label layoutX="273.0" layoutY="14.0" text="Tags" />
+                  <GridPane fx:id="grid" hgap="5" vgap="10">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="ALWAYS" maxWidth="550" minWidth="10.0" prefWidth="550" />
+                      <ColumnConstraints hgrow="NEVER" maxWidth="20" minWidth="10.0" prefWidth="20.0" />
+                    </columnConstraints>
+                  </GridPane>
                </children>
             </AnchorPane>
         </content>
       </ScrollPane>
+      <HBox maxHeight="-Infinity">
+         <children>
+            <Region maxHeight="-Infinity" prefHeight="27.0" prefWidth="483.0" HBox.hgrow="ALWAYS" />
+            <Button fx:id="addTags" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleAddTagsButton" text="Add Tags" />
+         </children>
+      </HBox>
   </items>
 </SplitPane>
