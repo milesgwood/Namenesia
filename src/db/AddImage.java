@@ -46,13 +46,7 @@ public class AddImage {
 			ps.close();
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				ps.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+		} 
 	}
 
 	public static Image getImage(int id) throws FileNotFoundException, IOException, SQLException {
@@ -74,19 +68,53 @@ public class AddImage {
 			}
 			ps.close();
 			
+			BufferedImage bf;
+			WritableImage wr;			
+			
 			// convert byte array back to BufferedImage
 			InputStream in = new ByteArrayInputStream(person_image);
-			BufferedImage bf = ImageIO.read(in);
+			bf = ImageIO.read(in);
 			//Convert BufferedImage to Scene Image
-			WritableImage wr = new WritableImage(bf.getWidth(), bf.getHeight());
+			wr = new WritableImage(bf.getWidth(), bf.getHeight());
 			SwingFXUtils.toFXImage(bf, wr);
 			ps.close();
 			return wr;
 
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (NullPointerException e) {
+			return getDefaultImage();
 		} 
-		return null;
 	}
 
+	/** 
+	 * Gets the default image that is stored at id 0 in the img database.
+	 * @return
+	 * @throws SQLException
+	 * @throws IOException
+	 */
+	private static Image getDefaultImage() throws SQLException, IOException {
+		
+		Connection c = Connector.c;
+		if (c == null || c.isClosed())
+			c = Connector.getConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		byte[] person_image = null;
+
+		c = Connector.getConnection();
+		ps = c.prepareStatement("SELECT image FROM img WHERE id = 0");
+		rs = ps.executeQuery();
+		if (rs.next()) {
+			person_image = rs.getBytes(1);
+		}
+		ps.close();
+		
+		// convert byte array back to BufferedImage
+		InputStream in = new ByteArrayInputStream(person_image);
+		BufferedImage bf = ImageIO.read(in);
+		//Convert BufferedImage to Scene Image
+		WritableImage wr = new WritableImage(bf.getWidth(), bf.getHeight());
+		SwingFXUtils.toFXImage(bf, wr);
+		return wr;
+	}
 }
