@@ -53,7 +53,6 @@ public class TagSearchEngine {
 			stmt = c.prepareStatement("SELECT tag FROM tags WHERE id = ? ;");
 			stmt.setInt(1, id);
 			rs = stmt.executeQuery();
-			int i = 0;
 			while (rs.next()) {
 				tags.add(rs.getString(1));
 			}

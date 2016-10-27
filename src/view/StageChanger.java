@@ -12,7 +12,7 @@ import db.PeopleGetter;
 import db.PersonBus;
 import javafx.application.Application;
 
-public class MainStage extends Application {
+public class StageChanger extends Application {
 
 	private static Stage mainStage;
 
@@ -26,25 +26,35 @@ public class MainStage extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("Profile.fxml"));
-		Scene scene = new Scene(root);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		stage.setTitle("Namenesia");
-		stage.setScene(scene);
-		mainStage = stage;
-		stage.show();
-	}
+		setMainStage(stage);
+		StageChanger ms = new StageChanger();
+		ms.profileView();
+
+		}
 
 	public static void main(String[] args) {
 		Person me = PeopleGetter.getPersonFromID(1);
 		PersonBus.setPerson(me, 1);
 		launch(args);
+
 	}
 
 	public void addTagsView() {
-		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("AddTags.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("AddTags.fxml"));
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			mainStage.setTitle("Namenesia");
+			mainStage.setScene(scene);
+			mainStage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void profileView() {
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("Profile.fxml"));
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			mainStage.setTitle("Namenesia");
