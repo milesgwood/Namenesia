@@ -22,7 +22,6 @@ import db.AddImage;
 import db.PersonBus;
 import db.TagSearchEngine;
 import javafx.stage.FileChooser;
-import view.StageChanger;
 
 public class ProfileController implements Initializable {
 	

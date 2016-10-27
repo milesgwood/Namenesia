@@ -8,7 +8,7 @@ public class Person {
 	public String firstName = null;
 	public String middle = null;
 	public String lastName = null;
-	public ArrayList<String> tags = new ArrayList<String>();
+	public ArrayList<String> tags = null;
 
 	public Person(String first,String middle,String last, ArrayList<String> tags)
 	{
@@ -38,6 +38,7 @@ public class Person {
 	
 	public void addTag(String tag)
 	{
+		this.tags = new ArrayList<String>();
 		this.tags.add(tag);
 	}
 	

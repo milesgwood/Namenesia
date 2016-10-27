@@ -1,4 +1,4 @@
-package view;
+package controller;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -41,7 +41,7 @@ public class StageChanger extends Application {
 
 	public void addTagsView() {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("AddTags.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("../view/AddTags.fxml"));
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			mainStage.setTitle("Namenesia");
@@ -54,14 +54,23 @@ public class StageChanger extends Application {
 	
 	public void profileView() {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("Profile.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("../view/Profile.fxml"));
 			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
 			mainStage.setTitle("Namenesia");
 			mainStage.setScene(scene);
 			mainStage.show();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void newNameView() throws Exception{
+		Parent root = FXMLLoader.load(getClass().getResource("../view/NewName.fxml"));
+		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
+		mainStage.setTitle("Namenesia");
+		mainStage.setScene(scene);
+		mainStage.show();
 	}
 }
