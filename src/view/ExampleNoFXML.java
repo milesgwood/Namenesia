@@ -19,7 +19,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 
-public class Main extends Application {
+public class ExampleNoFXML extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			//Sets the grid and alignment as well as the gaps

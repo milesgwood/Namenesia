@@ -6,19 +6,14 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -27,7 +22,6 @@ import db.AddImage;
 import db.PersonBus;
 import db.TagSearchEngine;
 import javafx.stage.FileChooser;
-import view.MainStage;
 
 public class ProfileController implements Initializable {
 	
@@ -50,7 +44,7 @@ public class ProfileController implements Initializable {
     private void handlePicturePressed(MouseEvent event) throws FileNotFoundException, IOException, SQLException
     {
     	final FileChooser fileChooser = new FileChooser();
-    	File file = fileChooser.showOpenDialog(MainStage.getMainStage());
+    	File file = fileChooser.showOpenDialog(StageChanger.getMainStage());
         if (file != null) {
         	AddImage.setImage(file.getAbsolutePath(), PersonBus.id);
         	image.setImage(AddImage.getImage(PersonBus.id));
@@ -60,7 +54,7 @@ public class ProfileController implements Initializable {
     @FXML
     private void handleAddTagsButton(ActionEvent event) 
     {
-    	MainStage ms = new MainStage();
+    	StageChanger ms = new StageChanger();
     	ms.addTagsView();
     }
     

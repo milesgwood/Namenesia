@@ -1,8 +1,6 @@
 package db;
 
 import dataTypes.Person;
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class PeopleSetterTest {

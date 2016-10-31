@@ -66,7 +66,7 @@ public class Connector {
 			
 			if(!c.isClosed()) 
 				{
-					c.commit();
+					if(!c.getAutoCommit()) c.commit();
 					c.close();
 				}
 		} catch (Exception e){
