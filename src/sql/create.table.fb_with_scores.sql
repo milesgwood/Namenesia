@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS fb_with_scores
+(id INT PRIMARY KEY NOT NULL, 
+first VARCHAR(15) NOT NULL, 
+middle VARCHAR(15),
+last VARCHAR(15),
+type VARCHAR (15),
+score INT DEFAULT 0, 
+email VARCHAR(30));
+

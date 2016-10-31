@@ -28,22 +28,20 @@ public class StageChanger extends Application {
 	public void start(Stage stage) throws Exception {
 		setMainStage(stage);
 		StageChanger ms = new StageChanger();
-		ms.profileView();
-
+		ms.newNameView();
 		}
 
 	public static void main(String[] args) {
 		Person me = PeopleGetter.getPersonFromID(1);
 		PersonBus.setPerson(me, 1);
 		launch(args);
-
 	}
 
 	public void addTagsView() {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("../view/AddTags.fxml"));
 			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
 			mainStage.setTitle("Namenesia");
 			mainStage.setScene(scene);
 			mainStage.show();
